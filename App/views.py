@@ -8,7 +8,10 @@ def home(request):
 def results(request):
     if(request.method == "GET"):
         query = request.GET.get("query")
-        hospitals = Hospital.objects.filter(name__contains=query)
+        if(query):
+            hospitals = Hospital.objects.filter(name__contains=query)
+        else:
+            hospitals = Hospital.objects.all()
     return render(request,"App/results.html",{"hospitals":hospitals})
 
 def hospital(request,id):
