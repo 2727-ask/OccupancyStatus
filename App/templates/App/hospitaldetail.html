@@ -1,0 +1,140 @@
+{% extends "App/base.html" %}
+{% block body %}
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center text-white">
+                    <h5>Details About</h5>
+                    <h1 class="mb-4">{{hospital.name}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="bg-primary bg-gradient p-4 p-sm-5 mt-0">
+    <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+        <div class="mb-4 mb-xl-0">
+            <div class="fs-3 fw-bold text-white">{{hospital.hospitalAddress}}</div>
+            <div class="text-white-50"><i class="bi bi-telephone-fill rounded"></i> : {{hospital.contact1}}</div>
+            <div class="text-white-50"><i class="bi bi-telephone-fill rounded"></i> : {{hospital.contact2}}</div>
+        </div>
+        <div class="ms-xl-4">
+            <div class="input-group mb-2">
+                <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..."
+                       aria-describedby="button-newsletter"/>
+                <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+            </div>
+            <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+        </div>
+    </div>
+</aside>
+
+<div class="container my-5">
+    <h2 class="fw-bolder my-3" style="text-align:center">Available Resources</h2> <img class="d-flex mx-auto my-2" style="width:30px" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Red_circle.gif?20210202002436">
+    <div class="row">
+        {% for x in features %}
+        <div class="col-12 col-lg-6 col-xl">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <div class="row align-items-center gx-0">
+                        <div class="col">
+                            <h6 class="text-uppercase text-muted mb-2">
+                                <span class="badge bg-success mt-n1">
+                      {{x.name}}
+                    </span>
+
+                            </h6>
+                            <!-- Heading -->
+                            <span class="h2 mb-0">
+                                <b style="font-size:30px;color:green">{{x.remaining}}</b><b
+                                    style="font-size:20px;color:white"> /{{x.total}}</b>
+                    </span>
+
+                            <!-- Badge -->
+
+                        </div>
+                        <div class="col-auto">
+
+                            <!-- Icon -->
+
+                            <span class="h2 mb-0">
+                                <b style="font-size:14px;color:pink">{{x.last_updated}}</b>
+
+                            </span>
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container-fluid">
+    <section class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <div class="text-center">
+                <h2 class="fw-bolder">Our Experienced Doctors</h2>
+                <p class="lead fw-normal text-muted mb-5">Dedicated to quality and your success</p>
+            </div>
+            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+                {% for x in doctors %}
+                <div class="col mb-5 mb-5 mb-xl-0">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle mb-4 px-4"
+                             src="https://dummyimage.com/150x150/ced4da/6c757d" alt="...">
+                        <h5 class="fw-bolder">{{x.name}}</h5>
+                        <div class="fst-italic text-muted">{{x.speciality}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container-fluid">
+    <section class="py-5 bg-info bg-gradient p-4 p-sm-5 mt-0">
+        <div class="container px-5 my-5">
+            <div class="text-center">
+                <h2 class="fw-bolder">About The Pillars</h2>
+                <p class="lead fw-normal text-muted mb-5">Dedicated to serve this nation</p>
+            </div>
+            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+                {% for x in owner %}
+                <div class="col mb-5 mb-5 mb-xl-0">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle mb-4 px-4"
+                             src="https://dummyimage.com/150x150/ced4da/6c757d" alt="...">
+                        <h5 class="fw-bolder" style="color:white">{{x.name}}</h5>
+                        <div class="fst-italic text-muted">{{x.contact}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<style>
+    header.masthead {
+    position: relative;
+    background-color: #343a40;
+    background: url("https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706413?b=1&k=20&m=1312706413&s=170667a&w=0&h=VRi3w2E1UqvCCcK-nDV6mH7FhDZoTU9MM2QKSom96X4=") no-repeat center center;
+    background-size: cover;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+
+
+
+
+
+
+</style>
+
+{% endblock %}

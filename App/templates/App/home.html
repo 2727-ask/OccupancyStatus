@@ -1,0 +1,65 @@
+{% extends "App/base.html" %}
+{% block body %}
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-white mb-2">A hospital bed is a parked taxi with the meter
+                        running.</h1>
+                    <p class="lead fw-normal text-white-50 mb-4">Get Realtime hospital Beds Availability Status. Search
+                        hospital According to your locality </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/results/all">Get Started</a>
+                        <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
+                                                                               src="https://media.istockphoto.com/photos/empty-luxury-modern-hospital-room-picture-id1298375809?b=1&k=20&m=1298375809&s=170667a&w=0&h=q0Pf0nTHR17Y8BcyS8pzfqWLa_HGwthP9qXvRMjanxg="
+                                                                               alt="..."/></div>
+        </div>
+    </div>
+</header>
+
+
+<!----Search Field------->
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center text-white">
+                    <!-- Page heading-->
+                    <h1 class="mb-5">Search For Hospitals Near Your Locality</h1>
+                    <form class="form-subscribe" id="contactForm" action="/results" method="get" >
+                        <!-- Email address input-->
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control form-control-lg" id="emailAddress" type="search"
+                                       placeholder="Enter hospital Name Here" name="query" data-sb-validations="required"
+                                       data-sb-can-submit="no">
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    header.masthead {
+    position: relative;
+    background-color: #343a40;
+    background: url("https://www.hdwallpapers.in/download/pleasant-wide.jpg") no-repeat center center;
+    background-size: cover;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+</style>
+{% endblock %}
