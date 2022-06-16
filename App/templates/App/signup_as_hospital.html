@@ -1,0 +1,46 @@
+{% extends "App/base.html" %}
+{% block body %}
+<div class="container my-5">
+    <form method="post">{% csrf_token %}
+        <label for="name">Hospital Name Here</label>
+        <input name="name" id="name" class="form-control form-control-lg" type="text" placeholder="Hospital Name Here"
+               aria-label=".form-control-lg example">
+        <br>
+        <label for="address">Hospital Adress Here</label>
+        <textarea id="address" class="address form-control form-control-lg" name="address"></textarea>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Phone 1</span>
+            <input type="tel" name="phone1" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+
+        <div class="input-group">
+            <input name="phone2" type="tel" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+            <span class="input-group-text">Phone 2</span>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Hospital Email</span>
+            <input type="email" name="email" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Hospital Google Map Url</span>
+            <input type="url" name="gmap" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <button class="btn btn-primary" type="submit">Save And Continue</button>
+        </div>
+    </form>
+
+    <br>
+
+
+</div>
+
+{% endblock %}

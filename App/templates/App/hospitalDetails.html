@@ -1,0 +1,98 @@
+{% extends "App/base.html" %}
+{% block body %}
+<div class="container my-5">
+    <form method="post">{% csrf_token %}
+        {% for x in hospital %}
+        <label for="name">Hospital Name Here</label>
+        <input name="name" value="{{x.name}}" id="name" class="form-control form-control-lg" type="text"
+               placeholder="Hospital Name Here"
+               aria-label=".form-control-lg example">
+        <br>
+        <label for="address">Hospital Adress Here</label>
+        <textarea id="address" class="address form-control form-control-lg"
+                  name="address">{{x.hospitalAddress}}</textarea>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Phone 1</span>
+            <input type="tel" value="{{x.contact1}}" name="phone1" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+
+        <div class="input-group">
+            <input name="phone2" value="{{x.contact2}}" type="tel" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+            <span class="input-group-text">Phone 2</span>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Hospital Email</span>
+            <input type="email" value="{{x.email}}" name="email" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Hospital Google Map Url</span>
+            <input type="url" name="gmap" value="{{x.mapUrl}}" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+        {% endfor %}
+        <br>
+        <div class="input-group mb-3">
+            <input value="Save" name="status" class="btn btn-primary" type="submit">
+        </div>
+    </form>
+
+    <br>
+    <hr>
+    <h3>Hospital Owners</h3>
+    <div class="row">
+        <div class="col-6">
+            <br>
+            <form method="post">{% csrf_token %}
+                <input class="form-control" name="name" type="text" placeholder="Enter Owner Name" aria-label="Owner Name">
+                <br>
+                <input class="form-control" name="contact" type="text" placeholder="Contact No" aria-label="Owner Name">
+                <br>
+                <input class="form-control" type="text" name="email" placeholder="Email" aria-label="Owner Name">
+                <br>
+                <input type="submit" name="status" value="Save Owner" class="btn btn-success">
+            </form>
+        </div>
+        <div class="col-6">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                {% for x in owner %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-heading{{x.id}}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapse{{x.id}}" aria-expanded="true"
+                                aria-controls="panelsStayOpen-collapse{{x.id}}">
+                            {{x.name}}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapse{{x.id}}" class="accordion-collapse collapse show"
+                         aria-labelledby="panelsStayOpen-heading{{x.id}}">
+                        <div class="accordion-body">
+                            <form method="post">{% csrf_token %}
+                                <input class="form-control" type="text" placeholder="Enter Owner Name"
+                                       aria-label="Owner Name" name="name" value="{{x.name}}">
+                                <br>
+                                <input class="form-control" type="text" placeholder="Contact No"
+                                       aria-label="Owner Name" name="contact" value="{{x.contact}}">
+                                <br>
+                                <input class="form-control" name="email" type="text" placeholder="Email" value="{{x.email}}" aria-label="Owner Name">
+                                <br>
+                                <input name="status" type="submit" value="Update Owner" class="btn btn-success">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

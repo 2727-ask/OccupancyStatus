@@ -1,0 +1,78 @@
+{% extends "App/base.html" %}
+{% block body %}
+
+<div class="container d-block mx-auto d-flex justify-content-center my-5">
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+<!--    <script type="text/javascript"-->
+<!--            src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>-->
+<!--    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css'-->
+<!--          media="screen"/>-->
+    <form method="post" id="form1">{% csrf_token %}
+        <div style="width: 40vw">
+            <h2 class="form-signin-heading">
+                Registration</h2>
+            <label for="txtUsername">
+                Username</label>
+            <input name="name" type="text" id="txtUsername" class="form-control" placeholder="Enter Username"
+                   required/>
+            <br/>
+            <label for="txtEmail">
+                Email</label>
+            <input name="txtEmail" id="txtEmail" class="form-control" placeholder="Enter Email"
+                   required type="email"/>
+            <br>
+            <label for="txtPassword">
+                Password</label>
+            <input name="password" name="txtPassword" type="password" id="txtPassword"
+                   title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number"
+                   class="form-control" placeholder="Enter Password" required
+            />
+            <br/>
+            <label for="txtConfirmPassword">
+                Confirm Password</label>
+            <input name="txtConfirmPassword" type="password" id="txtConfirmPassword" class="form-control"
+                   placeholder="Confirm Password"/>
+            <br/>
+            <hr>
+
+
+
+
+            <input type="submit" name="btnSignup" value="Sign Up" id="btnSignup" class="btn btn-primary"/>
+            <input type="submit" value="Sign Up as Hospital" name="btnSignup" class="btn btn-info"/>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+    window.onload = function () {
+        var txtPassword = document.getElementById("txtPassword");
+        var txtConfirmPassword = document.getElementById("txtConfirmPassword");
+        txtPassword.onchange = ConfirmPassword;
+        txtConfirmPassword.onkeyup = ConfirmPassword;
+        function ConfirmPassword() {
+            txtConfirmPassword.setCustomValidity("");
+            if (txtPassword.value != txtConfirmPassword.value) {
+                txtConfirmPassword.setCustomValidity("Passwords do not match.");
+            }
+        }
+    }
+
+
+
+
+    </script>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

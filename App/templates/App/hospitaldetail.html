@@ -32,7 +32,9 @@
 </aside>
 
 <div class="container my-5">
-    <h2 class="fw-bolder my-3" style="text-align:center">Available Resources</h2> <img class="d-flex mx-auto my-2" style="width:30px" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Red_circle.gif?20210202002436">
+    <h2 class="fw-bolder my-3" style="text-align:center">Available Resources</h2> <img class="d-flex mx-auto my-2"
+                                                                                       style="width:30px"
+                                                                                       src="https://upload.wikimedia.org/wikipedia/commons/4/41/Red_circle.gif?20210202002436">
     <div class="row">
         {% for x in features %}
         <div class="col-12 col-lg-6 col-xl">
@@ -60,7 +62,8 @@
                             <!-- Icon -->
 
                             <span class="h2 mb-0">
-                                <b style="font-size:14px;color:pink">{{x.last_updated}}</b>
+                                <b style="font-size:14px;color:pink">{{x.last_updated}}</b><br>
+                                <a href="/bookbed/{{x.id}}" class="btn btn-success">BookNow</a>
 
                             </span>
                         </div>
@@ -128,6 +131,7 @@
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
+
 
 
 

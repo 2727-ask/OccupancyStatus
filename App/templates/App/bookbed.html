@@ -1,0 +1,51 @@
+{% extends "App/base.html" %}
+{% block body %}
+<div class="container my-5">
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <code>Note: A user is allowed to book only one bed in the hospital</code><br>
+    <code>Note: Booking is confirmed only after user verification</code>
+    <br>
+    <br>
+    <br>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{feature.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Quantity <code>1</code></h6>
+            <p class="card-text">{{feature.hospital}}</p>
+        </div>
+    </div>
+    <br>
+    <form method="post">{% csrf_token %}
+        <button type="submit" class="btn btn-success">Confirm</button>
+    </form>
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

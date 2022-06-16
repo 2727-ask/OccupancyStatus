@@ -1,0 +1,42 @@
+{% extends "App/base.html" %}
+{% block body %}
+<div class="container my-5">
+    <h3><b>Your Bookings</b></h3>
+    <hr>
+
+    <div class="row">
+        {% for x in bookings %}
+        <div class="col-3">
+            <div class="card my-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{x.hospital}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{x.feature}}</h6>
+                    <p class="card-text">Booking Id {{x.id}}</p>
+                    <p class="card-link">{{x.date}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock %}
