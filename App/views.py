@@ -37,7 +37,7 @@ def dashboard(request):
                 contact = request.POST.get("contact")
                 email = request.POST.get("email2")
                 speciality = request.POST.get("speciality")
-                image = request.FILES.get("image")
+                image = request.FILES.get("photo")
                 print("Image",image)
                 doctor = Doctors(name=name, email=email, contact=contact, speciality=speciality, hospital=hospital, image=image)
                 doctor.save()
