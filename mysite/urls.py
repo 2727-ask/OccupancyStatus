@@ -24,3 +24,8 @@ urlpatterns = [
     path('',include('App.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+admin.site.site_header = 'Admin Dashboard'
+admin.site.site_title  = 'Wellness Inn'
+admin.site.index_title   = 'Chaitanya Developers'
+
