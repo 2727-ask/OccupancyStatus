@@ -4,7 +4,15 @@
 <div class="main">
     <section class="bg-secondary p-5">
         <h3 style="color:white">Welcome! {{request.user}}</h3>
-        <h2><b><a href="/details" style="color:white">{{facilities.0.hospital}} <i class="bi bi-pen-fill"></i></a></b></h2>
+        <div class="row">
+            <div class="col-6">
+                <h2><b><a href="/details" style="color:white">{{facilities.0.hospital}} <i
+                        class="bi bi-pen-fill"></i></a></b></h2>
+            </div>
+            <div class="col-6">
+                <a href="/dbookings" class="btn btn-info">Bookings</a>
+            </div>
+        </div>
 
 
     </section>
@@ -83,7 +91,7 @@
                 <div class="p-2 m-2">
                     <h5>Doctors</h5>
                     <hr>
-                    <form method="post">{% csrf_token %}
+                    <form method="post" enctype="multipart/form-data">{% csrf_token %}
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Enter Doctor Name</label>
                             <input type="text" class="form-control" name="name" id="exampleFormControlInput4"
@@ -104,6 +112,11 @@
                             <input type="text" class="form-control" name="speciality" id="exampleFormControlInput7"
                                    placeholder="Facility Name" required>
                         </div>
+                        <div class="col"><label>Display Photo</label><input type="file"
+                                                                            class="form-control"
+                                                                            name="photo"
+                                                                            value="{{x.photo}}" accept="image/*">
+                        </div><br>
                         <div class="mb-3">
                             <input type="submit" name="status" value="Save Doctor" class="btn btn-success">
                         </div>
@@ -116,7 +129,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <div class="row">
-                                <form method="post">{% csrf_token %}
+                                <form method="post" enctype="multipart/form-data">{% csrf_token %}
                                     <div class="col"><label for="name">Name</label><input type="text"
                                                                                           class="form-control"
                                                                                           name="name"
@@ -126,6 +139,7 @@
                                                                                                  name="contact"
                                                                                                  value="{{x.contact}}">
                                     </div>
+
                                     <div class="col"><label for="remaining">Speciality</label><input type="text"
                                                                                                      id="speciality"
                                                                                                      class="form-control"

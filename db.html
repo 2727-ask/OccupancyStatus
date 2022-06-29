@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<title>db.sqlite3</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document">
+
+
+<p>SQLite format 3&#64;  %0)^%.4 ö*ûö ö &amp; ¹      Õõ     ¢ÂgêýOÐ?k-sindexauth_user_groups_user_id_group_id_94350c0c_uniqauth_user_groupsCREATE UNIQUE INDEX &quot;auth_user_groups_user_id_group_id_94350c0c_uniq&quot; ON &quot;auth_user_groups&quot; (&quot;user_id&quot;, &quot;group_id&quot;):g9aindexauth_group_permissions_permission_id_84c5c92eauth_group_permissionsCREATE INDEX &quot;auth_group_permissions_permission_id_84c5c92e&quot; ON &quot;auth_group_permissions&quot; (&quot;permission_id&quot;)+]9Mindexauth_group_permissions_group_id_b120cbf9auth_group_permissionsCREATE INDEX &quot;auth_group_permissions_group_id_b120cbf9&quot; ON &quot;auth_group_permissions&quot; (&quot;group_id&quot;)j9#indexauth_group_permissions_group_id_permission_id_0cd325b0_uniqauth_group_permissionsCREATE UNIQUE INDEX &quot;auth_group_permissions_group_id_permission_id_0cd325b0_uniq&quot; ON &quot;auth_group_permissions&quot; (&quot;group_id&quot;, &quot;permission_id&quot;)$]+Mindexauth_permission_content_type_id_2f476e4bauth_permissionCREATE INDEX &quot;auth_permission_content_type_id_2f476e4b&quot; ON &quot;auth_permission&quot; (&quot;content_type_id&quot;)S
+y+indexauth_permission_content_type_id_codename_01ab375a_uniqauth_permissionCREATE UNIQUE INDEX &quot;auth_permission_content_type_id_codename_01ab375a_uniq&quot; ON &quot;auth_permission&quot; (&quot;content_type_id&quot;, &quot;codename&quot;)X AA;tableauth_user_user_permissionsauth_user_user_permissions
+CREATE TABLE &quot;auth_user_user_permissions&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;permission_id&quot; integer NOT NULL REFERENCES &quot;auth_permission&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)0 --tableauth_user_groupsauth_user_groups CREATE TABLE &quot;auth_user_groups&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;group_id&quot; integer NOT NULL REFERENCES &quot;auth_group&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)*    #tableauth_userauth_user
+CREATE TABLE &quot;auth_user&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;password&quot; varchar(128) NOT NULL, &quot;last_login&quot; datetime NOT NULL, &quot;is_superuser&quot; bool NOT NULL, &quot;username&quot; varchar(30) NOT NULL UNIQUE, &quot;first_name&quot; varchar(30) NOT NULL, &quot;last_name&quot; varchar(30) NOT NULL, &quot;email&quot; varchar(75) NOT NULL, &quot;is_staff&quot; bool NOT NULL, &quot;is_active&quot; bool NOT NULL, &quot;date_joined&quot; datetime NOT NULL)1
+Eindexsqlite_autoindex_auth_user_1auth_user N997tableauth_group_permissionsauth_group_permissions    CREATE TABLE &quot;auth_group_permissions&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;group_id&quot; integer NOT NULL REFERENCES &quot;auth_group&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;permission_id&quot; integer NOT NULL REFERENCES &quot;auth_permission&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)!!ktableauth_groupauth_groupCREATE TABLE &quot;auth_group&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(80) NOT NULL UNIQUE)3G!indexsqlite_autoindex_auth_group_1auth_group$++tableauth_permissionauth_permissionCREATE TABLE &quot;auth_permission&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(50) NOT NULL, &quot;content_type_id&quot; integer NOT NULL REFERENCES &quot;django_content_type&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;codename&quot; varchar(100) NOT NULL)Ho3{indexdjango_content_type_app_label_model_76bd3d3b_uniqdjango_content_typeCREATE UNIQUE INDEX &quot;django_content_type_app_label_model_76bd3d3b_uniq&quot; ON &quot;django_content_type&quot; (&quot;app_label&quot;, &quot;model&quot;)g33utabledjango_content_typedjango_content_typeCREATE TABLE &quot;django_content_type&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(100) NOT NULL, &quot;app_label&quot; varchar(100) NOT NULL, &quot;model&quot; varchar(100) NOT NULL)P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)Y//atabledjango_migrationsdjango_migrationsCREATE TABLE &quot;django_migrations&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;app&quot; varchar(255) NOT NULL, &quot;name&quot; varchar(255) NOT NULL, &quot;applied&quot; datetime&amp;
+
+åÇfù¶k!
+×
+
+P</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 11)</p>
+Unexpected indentation.</div>
+<blockquote>
+É | 4 ë ¦ d </blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 12)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>å+3%Asessions0001_initial2022-06-16 16:47:02.775651HWAauth0012_alter_user_first_name_max_length2022-06-16 16:47:02.769636&#64;GAauth0011_update_proxy_permissions2022-06-16 16:47:02.741717CMAauth0010_alter_group_name_max_length2022-06-16 16:47:02.720133GUAauth0009_alter_user_last_name_max_length2022-06-16 16:47:02.695052FSAauth0008_alter_user_username_max_length2022-06-16 16:47:02.674602K]Aauth0007_alter_validators_add_error_messages2022-06-16 16:47:02.652167A
+IAauth0006_require_contenttypes_00022022-06-16 16:47:02.626135B KAauth0005_alter_user_last_login_null2022-06-16 16:47:02.623568&#64; GAauth0004_alter_user_username_opts2022-06-16 16:47:02.600268C
+MAauth0003_alter_user_email_max_length2022-06-16 16:47:02.579425H    WAauth0002_alter_permission_name_max_length2022-06-16 16:47:02.559351H%GAcontenttypes0002_remove_content_type_name2022-06-16 16:47:02.540776IWAadmin0003_logentry_add_action_flag_choices2022-06-16 16:47:02.501891AGAadmin0002_logentry_remove_auto_add2022-06-16 16:47:02.4794580%Aadmin0001_initial2022-06-16 16:47:02.4582229;AApp0002_auto_20220616_16452022-06-16 16:50:39.306456.%AApp0001_initial2022-06-16 16:47:02.418407/%Aauth0001_initial2022-06-16 16:47:02.3568967%%Acontenttypes0001_initial2022-06-16 16:47:02.336283
+ØeéÃªezOnew__App_hospital+auth_permission0
+!auth_group       auth_userØ%App_hospital3django_content_type -django_admin_logApp_hospital/django_migrations
+((8HzXfîËÚ½&nbsp;Appbooking Appdoctors Appfeature</p>
+<p>Appowner    #Appuserdetails
+Apphospital
+sessionssession
+%#contenttypescontenttype
+authuserauthgroup!authpermission</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 25)</p>
+Unexpected indentation.</div>
+<blockquote>
+adminlogentry</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 26)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>'íÙÊ¼yeWG7' Appbooking Appdoctors
+Appfeature  Appowner#Appuserdetails
+Apphospitalsessionssession%#contenttypescontenttype authuser
+authgroup!authpermission
+adminlogentry
+0 9ïÚÅ²
+mWG4!ïÝÍ·
+nG2
+ö
+à
+Ì
+¶
+
+
+m
+]
+J
+7
+&amp;
+ ÿ ê × Å °   v a L 9% view_booking0) delete_booking/) change_booking.# add_booking-% view_doctors,) delete_doctors+) change_doctors*# add_doctors)%
+view_feature()
+delete_feature')
+change_feature&amp;#
+add_feature%!       view_owner$%        delete_owner#%      change_owner&quot;      add_owner!-view_userdetails 1delete_userdetails1change_userdetails
++add_userdetails
+'view_hospital
++delete_hospital+change_hospital%add_hospital%view_session)delete_session)change_session#add_session-view_contenttype1delete_contenttype1change_contenttype+add_contenttypeview_user#delete_user#change_user
+add_user
+!view_group %delete_group %change_group
+add_group +view_permission/delete_permission/change_permission)add_permission   'view_logentry      +delete_logentry    +change_logentry    %       add_logentry
+__
+
+)A    +</p>
+<blockquote>
+A</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 62)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>pbkdf2_sha256$216000$mPvFvKb2Ccw9$TrJPVUilsCg+q5kfEJb+A9CdWl4sk7pg7FE8+ctimxw=2022-06-16 16:47:45.746507ashutoshkumbhar2022-06-16 16:47:40.356452
+íí+ ashutoshkumbhar
+ÛÛ&quot;MSAmu5qmhkux9a5nknuogrm35hb3aailbky.eJxVjEEOwiAQRe_C2hAYCkWX7j0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVSVh1-t4z0kLoBvmO9NU2tLvOU9abonXZ9aSzP8-7-HRTs5VsjGIIAY3ZuDASDcXxFm010EQDRibgA4u0wiDmCkPU5cBa0nqMlAvX-AMnqN6Q:1o1sen:xZBDNUL5l1q4--Ej3jvC1EI6p9G3Y-YoVGDFB6kc1bQ2022-06-30 16:47:45.749063
+ÜÜ#M     mu5qmhkux9a5nknuogrm35hb3aailbky
+0åü÷òíçáÛÕÏÉÃ½·±«¥{uoic]WQKE?93-'!      ý÷ñëå 0 / . - , + <a href="#system-message-1"><span class="problematic" id="problematic-1">*</span></a> )
+(
+'
+&amp;
+%   $   #   &quot;   ! 
+
+
+
+  
+                 
+ê$Ò ÕÂgý¹ü
+} ç , , , , ,Ð=îÀO-1indexauth_user_groups_user_id_6a12ed8bauth_user_groupsCREATE INDEX &quot;auth_user_groups_user_id_6a12ed8b&quot; ON &quot;auth_user_groups&quot; (&quot;user_id&quot;)?k-sindexauth_user_groups_user_id_group_id_94350c0c_uniqauth_user_groupsCREATE UNIQUE INDEX &quot;auth_user_groups_user_id_group_id_94350c0c_uniq&quot; ON &quot;auth_user_groups&quot; (&quot;user_id&quot;, &quot;group_id&quot;):g9aindexauth_group_permissions_permission_id_84c5c92eauth_group_permissionsCREATE INDEX &quot;auth_group_permiw  A/indexauth_user_user_permissions_user_id_permission_id_14a6b632_uniqauth_user_user_permissionsCREATE UNIQUE INDEX &quot;auth_user_user_permissions_user_id_permission_id_14a6b632_uniq&quot; ON &quot;auth_user_user_permissions&quot; (&quot;user_id&quot;, &quot;permission_id&quot;)j9#indexauth_group_permissions_group_id_permission_id_0cd325b0_uniqauth_group_permissionsCREATE UNIQUE INDEX &quot;auth_group_permissions_group_id_permission_id_0cd325b0_uniq&quot; ON &quot;auth_group_permissions&quot; (&quot;group_id&quot;, &quot;permission_id&quot;)õ]+Mindexaut:g9aindexauth_group_permissions_permission_id_84c5c92eauth_group_permissionsCREATE INDEX &quot;auth_group_permissions_permission_id_84c5c92e&quot; ON &quot;auth_group_permissions&quot; (&quot;permission_id&quot;)+]9Mindexauth_group_permissions_group_id_b120cbf9auth_group_permissionsCREATE INDEX &quot;auth_group_permissions_group_id_b120cbf9&quot; ON &quot;auth_group_permissions&quot; (&quot;group_id&quot;)X AA;tableauth_user_user_permissionsauth_user_user_permissions
+CREATE TABLE &quot;auth_user_user_permissions&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;permission_id&quot; integer NOT NULL REFERENCES &quot;auth_permission&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)0 --tableauth_user_groupsauth_user_groups CREATE TABLE &quot;auth_user_groups&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;group_id&quot; integer NOT NULL REFERENCES &quot;auth_group&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED) &amp;à#tableauth_userauth_user
+CREATE TABLE &quot;auth_user&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;password&quot; varchar(128) NOT NULL, &quot;last_login&quot; datetime NOT NULL, &quot;is_superuser&quot; bool NOT NULL, &quot;username&quot; varchar(30) NOT NULL UNIQUE, &quot;first_name&quot; varchar(30) NOT NULL, &quot;last_name&quot; varchar(30) NOT NULL, &quot;email&quot; varchar(75) NOT NULL, &quot;is_staff&quot; bool NOT NULL, &quot;is_active&quot; bool NOT NULL, &quot;date_joined&quot; datetime NOT NULL)1
+Eindexsqlite_autoindex_auth_user_1auth_user N997tableauth_group_permissionsauth_group_permissions    CREATE TABLE &quot;auth_group_permissions&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;group_id&quot; integer NOT NULL REFERENCES &quot;auth_group&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;permission_id&quot; integer NOT NULL REFERENCES &quot;auth_permission&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)!!ktableauth_groupauth_groupCREATE TABLE &quot;auth_group&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(80) NOT NULL UNIQUE)3G!indexsqlite_autoindex_auth_group_1auth_group&gt;$++tableauth_permissionauth_permissionCREATE T8cAYindexauth_user_user_permissions_user_id_a95ead1bauth_user_user_permissionsCREATE INDEX &quot;auth_user_user_permissions_user_id_a95ead1b&quot; ON &quot;auth_user_user_permissions&quot; (&quot;user_id&quot;)Q-5indexauth_user_groups_group_id_97559544auth_user_groupsCREATE INDEX &quot;auth_user_groups_group_id_97559544&quot; ON &quot;auth_user_groups&quot; (&quot;group_id&quot;)O-1indexauth_user_groups_user_id_6a12ed8bauth_user_groupsCREATE INDEX &quot;auth_user_groups_user_id_6a12ed8b&quot; ON &quot;auth_user_groups&quot; (&quot;user_id&quot;)?k-sindexauth_user_groups_user_id_group_id_94350c0c_uniqauth_user_groupsCREATE UNIQUE INDEX &quot;auth_user_groups_user_id_group_id_94350c0c_uniq&quot; ON &quot;auth_user_groups&quot; (&quot;user_id&quot;, &quot;group_id&quot;)P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)Y//atabledjango_migrationsdjango_migrationsCREATE TABLE &quot;django_migrations&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;app&quot; varchar(255) NOT NULL, &quot;name&quot; varchar(255) NOT NULL, &quot;applied&quot; datetime NOT NULL)
+ê[cÈ¤[¶ ßÔQ T É A
+¶
+8Ã F
+¾
+3       µ       ­   {I%indexApp_owner_hospital_id_e7768d62App_owner#CREATE INDEX &quot;App_owner_hospital_id_e7768d62&quot; ON &quot;App_owner&quot; (&quot;hospital_id&quot;) M+-indexApp_userdetails_user_id_8044e575App_userdetails&quot;CREATE INDEX &quot;App_userdetails_user_id_8044e575&quot; ON &quot;App_userdetails&quot; (&quot;user_id&quot;)F##StableApp_featureApp_feature
+CREATE TABLE &quot;App_feature&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(100) NOT NULL, &quot;total&quot; integer NOT NULL, &quot;remaining&quot; integer NOT NULL, &quot;last_updated&quot; datetime NOT NULL, &quot;hospital_id&quot; integer NOT NULL REFERENCES &quot;App_hospital&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)!tableApp_ownerApp_owner
+CREATE TABLE &quot;App_owner&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(100) NOT NULL, &quot;contact&quot; integer NOT NULL, &quot;email&quot; varchar(200) NOT NULL, &quot;hospital_id&quot; integer NOT NULL REFERENCES &quot;App_hospital&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)++utableApp_userdetailsApp_userdetails
+CREATE TABLE &quot;App_userdetails&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;mobile&quot; integer NOT NULL, &quot;address&quot; text NOT NULL, &quot;status&quot; bool NOT NULL, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)0g%%
+/tableApp_hospitalApp_hospitalCREATE TABLE &quot;App_hospital&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY I%indexApp_owner_hospital_id_e7768d62App_owner#CREATE INDEX &quot;App_owner_hospital_id_e7768d62&quot; ON &quot;App_owner&quot; (&quot;hospital_id&quot;) M+-indexApp_userdetails_user_id_8044e575App_userdetails&quot;CREATE INDEX &quot;App_userdetails_user_id_8044e575&quot; ON &quot;App_userdetails&quot; (&quot;user_id&quot;)JoAqindexauth_user_user_permissions_permission_id_1fbb5f2cauth_user_user_permissionsCREATE INDEX &quot;auth_user_user_permissions_permission_id_1fbb5f2c&quot; ON &quot;auth_user_user_permissions&quot; (&quot;permission_id&quot;)cAYindexauth_user_user_permissions_user_id_a95ead1bauth_user_user_permissionsCREATE INDEX &quot;auth_user_user_permissions_user_id_a95ead1b&quot; ON &quot;auth_user_user_permissions&quot; (&quot;user_id&quot;)w  A/indexauth_user_user_permissions_user_id_permission_id_14a6b632_uniqauth_user_user_permissionsCREATE UNIQUE INDEX &quot;auth_user_user_permissions_user_id_permission_id_14a6b632_uniq&quot; ON &quot;auth_user_user_permissr&amp;%%
+'tableApp_hospitalApp_hospital)CREATE TABLE &quot;App_hospital&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(100) NOT NULL, &quot;contact2&quot; integer NULL, &quot;display_photo&quot; varchar(100) NULL, &quot;hospitalAddress&quot; text NOT NULL, &quot;mapUrl&quot; text NOT NULL, &quot;user_id&quot; integer NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;contact1&quot; integer NULL)|%E#
+indexApp_booking_user_id_3cbe6d01App_booking(CREATE INDEX &quot;App_booking_user_id_3cbe6d01&quot; ON &quot;App_booking&quot; (&quot;user_id&quot;)$M#-indexApp_booking_hospital_id_2f285634App_booking'CREATE INDEX &quot;App_booking_hospital_id_2f285634&quot; ON &quot;App_booking&quot; (&quot;hospital_id&quot;)#K#)indexApp_booking_feature_id_2a093ba7App_booking&amp;CREATE INDEX &quot;App_booking_feature_id_2a093ba7&quot; ON &quot;App_booking&quot; (&quot;feature_id&quot;)&quot;M#-indexApp_doctors_hospital_id_74bbf6c5App_doctors%CREATE INDEX &quot;App_doctors_hospital_id_74bbf6c5&quot; ON &quot;App_doctors&quot; (&quot;hospital_id&quot;)!M#-indexApp_feature_hospital_id_f02bbda5App_feature$CREATE INDEX &quot;App_feature_hospital_id_f02bbda5&quot; ON &quot;App_feature&quot; (&quot;hospital_id&quot;)T
+##otableApp_bookingApp_booking CREATE TABLE &quot;App_booking&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;date&quot; datetime NOT NULL, &quot;status&quot; bool NOT NULL, &quot;service_completed&quot; bool NOT NULL, &quot;feature_id&quot; integer NULL REFERENCES &quot;App_feature&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;hospital_id&quot; integer NOT NULL REFERENCES &quot;App_hospital&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)G
+##UtableApp_doctorsApp_doctorsCREATE TABLE &quot;App_doctors&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(100) NOT NULL, &quot;contact&quot; integer NOT NULL, &quot;email&quot; varchar(254) NOT NULL, &quot;speciality&quot; varchar(100) NULL, &quot;hospital_id&quot; integer NOT NULL REFERENCES &quot;App_hospital&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED)
+xýwÌ9m¢z¤ýÉ ù Æ
+Ð 
+9     ¶¸xEO)indexsqlite_autoindex_new__auth_user_1new__auth_user.x$7]+Mindexauth_permission_content_type_id_2f476e4bauth_permissionCREATE INDEX &quot;auth_permission_content_type_id_2f476e4b&quot; ON &quot;auth_permission&quot; (&quot;content_type_id&quot;)S6y+indexauth_permission_content_type_id_codename_01ab375a_uniqauth_permissionCREATE UNIQUE INDEX &quot;auth_permission_content_type_id_codename_01ab375a_uniq&quot; ON &quot;auth_permission&quot; (&quot;content_type_id&quot;, &quot;codename&quot;)%5++tableauth_permissionauth_permission-CREATE TABLE &quot;auth_permission&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;content_type_id&quot; integer NOT NULL REFERENCES &quot;django_content_type&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;codename&quot; varchar(100) NOT NULL, &quot;name&quot; varchar(255) NOT NULL)H4o3{indexdjango_content_type_app_label_model_76bd3d3b_uniqdjango_content_typeCREATE UNIQUE INDEX &quot;django_content_type_app_label_model_76bd3d3b_uniq&quot; ON &quot;django_content_type&quot; (&quot;app_label&quot;, &quot;model&quot;)I3339tabledjango_content_typedjango_content_typeCREATE TABLE &quot;django_content_type&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;app_label&quot; varchar(100) NOT NULL, &quot;model&quot; varchar(100) NOT NULL)0O-1indexdjango_admin_log_user_id_c564eba6django_admin_log+CREATE INDEX &quot;django_admin_log_user_id_c564eba6&quot; ON &quot;django_admin_log&quot; (&quot;user_id&quot;)(/_-Qindexdjango_admin_log_content_type_id_c4bce8ebdjango_admin_log!CREATE INDEX &quot;django_admin_log_content_type_id_c4bce8eb&quot; ON &quot;django_admin_log&quot; (&quot;content_type_id&quot;)~.--/tabledjango_admin_logdjango_admin_log,CREATE TABLE &quot;django_admin_log&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;action_time&quot; datetime NOT NULL, &quot;object_id&quot; text NULL, &quot;object_repr&quot; varchar(200) NOT NULL, &quot;change_message&quot; text NOT NULL, &quot;content_type_id&quot; integer NULL REFERENCES &quot;django_content_type&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;action_flag&quot; smallint unsigned NOT NULL CHECK (&quot;action_flag&quot; &gt;= 0)) ]%%
+'tableApp_hK3EG!indexsqlite_autoindex_auth_group_1auth_group.D!!mtableauth_groupauth_groupCREATE TABLE &quot;auth_group&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(150) NOT NULL UNIQUE)
+¦YQ+in;GO)indexsqlite_autoindex_new__auth_user_1new__auth_user)UEindexsqlitLG%!indexApp_hospital_user_id_a9d31f45App_hospitalCREATE INDEX &quot;App_hospital_user_id_a9d31f45&quot; ON &quot;App_hospital&quot; (&quot;user_id&quot;)JS)9indexdjango_session_expire_date_a5c62663django_session/CREATE INDEX &quot;django_session_expire_date_a5c62663&quot; ON &quot;django_session&quot; (&quot;expire_date&quot;)6H))'tabledjango_sessiondjango_session
+CREATE TABLE &quot;django_session&quot; (&quot;session_key&quot; varchar(40) NOT NULL PRIMARY KEY, &quot;session_data&quot; text NOT NULL, &quot;expire_date&quot; datetime NOT NULL);IO)indexsqlite_autoindex_django_session_1django_session 1GEindexsqlite_autoindex_auth_user_1auth_user*F#tableauth_userauth_userCREATE TABLE &quot;auth_user&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;password&quot; varchar(128) NOT NULL, &quot;last_login&quot; datetime NULL, &quot;is_superuser&quot; bool NOT NULL, &quot;username&quot; varchar(150) NOT NULL UNIQUE, &quot;last_name&quot; varchar(150) NOT NULL, &quot;email&quot; varchar(254) NOT NULL, &quot;is_staff&quot; bool NOT NULL, &quot;is_active&quot; bool NOT NULL, &quot;date_joined&quot; datetime NOT NULL, &quot;first_name&quot; varchar(150) NOT NULL)åG%!indexApp_hospital_user_id_a9d31f45App_hospitalCREATE INDEX &quot;App_hospital_user_id_a9d31f45&quot; ON &quot;App_hospital&quot; (&quot;user_id&quot;)S##otableApp_bookingApp_booking CREATE TABLE &quot;App_booking&quot; (&quot;id&quot; integer NOT K|K//
+'rK%%
+'tableApp_hospitalApp_hospital0CREATE TABLE &quot;App_hospital&quot; (&quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT, &quot;name&quot; varchar(100) NOT NULL, &quot;contact2&quot; integer NULL, &quot;display_photo&quot; varchar(100) NULL, &quot;hospitalAddress&quot; text NOT NULL, &quot;mapUrl&quot; text NOT NULL, &quot;user_id&quot; integer NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED, &quot;contact1&quot; integer NULL)
++!0ÀÜ²b: Þ´rN.
+ð
+Î
+°</p>
+<div class="system-message" id="system-message-1">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 62); <em><a href="#problematic-1">backlink</a></em></p>
+Inline emphasis start-string without end-string.</div>
+<p>T
+# ö Ô ¬  ` &lt;  è Â  f 5 
+ê
+Æ
+¢
+
+`
+8
+       ì       Ê       ¢       z       V       4        äÀ&quot;0%- view_bookingCan view booking&amp;/)1 delete_bookingCan delete booking&amp;.)1 change_bookingCan change booking -#+ add_bookingCan add booking&quot;,%- view_doctorsCan view doctors&amp;+)1 delete_doctorsCan delete doctors&amp;*)1 change_doctorsCan change doctors )#+ add_doctorsCan add doctors&quot;(%-
+view_featureCan view feature&amp;')1
+delete_featureCan delete feature&amp;&amp;)1
+change_featureCan change feature %#+
+add_featureCan add feature
+$!)  view_ownerCan view owner&quot;#%- delete_ownerCan delete owner&quot;&quot;%-     change_ownerCan change owner
+!'  add_ownerCan add owner+ -7view_userdetailsCan view user details/1;delete_userdetailsCan delete user details/
+1;change_userdetailsCan change user details)
++5add_userdetailsCan add user details$
+'/view_hospitalCan view hospital(+3delete_hospitalCan delete hospital(+3change_hospitalCan change hospital&quot;%-add_hospitalCan add hospital&quot;%-view_sessionCan view session&amp;)1delete_sessionCan delete session&amp;)1change_sessionCan change session #+add_sessionCan add session+-7view_contenttypeCan view content type/1;delete_contenttypeCan delete content type/1;change_contenttypeCan change content type)+5add_contenttypeCan add content type
+'view_userCan view user #+delete_userCan delete user #+change_userCan change user
+
+%add_userCan add user</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 162)</p>
+Unexpected indentation.</div>
+<blockquote>
+!)view_groupCan view group&quot; %-delete_groupCan delete group&quot;</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 163)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<dl class="docutils">
+<dt>%-change_groupCan change group</dt>
+<dd>'add_groupCan add group(+3view_permissionCan view permission,/7delete_permissionCan delete permission,/7change_permissionCan change permission&amp;)1add_permissionCan add permission$ '1view_logentryCan view log entry(  +5delete_logentryCan delete log entry(      +5change_logentryCan change log entry&quot;      %/add_logentryCan add log entry</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/Users/ashutoshkumbhar/development/Covid19Hospital/mysite/db.sqlite3</tt>, line 165)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p>ââA      2022-06-30 16:47:45.749063
+</p>
+</div>
+</body>
+</html>

@@ -1,36 +1,50 @@
 {% extends "App/base.html" %}
 {% block body %}
 <div class="container my-5">
-    <form method="post">{% csrf_token %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
         <label for="name">Hospital Name Here</label>
         <input name="name" id="name" class="form-control form-control-lg" type="text" placeholder="Hospital Name Here"
-               aria-label=".form-control-lg example">
+               aria-label=".form-control-lg example" required>
         <br>
         <label for="address">Hospital Adress Here</label>
-        <textarea id="address" class="address form-control form-control-lg" name="address"></textarea>
+        <textarea id="address" class="address form-control form-control-lg" name="address" required></textarea>
         <br>
         <div class="input-group mb-3">
             <span class="input-group-text">Phone 1</span>
             <input type="tel" name="phone1" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
         </div>
 
         <div class="input-group">
             <input name="phone2" type="tel" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
             <span class="input-group-text">Phone 2</span>
         </div>
         <br>
         <div class="input-group mb-3">
             <span class="input-group-text">Hospital Email</span>
-            <input type="email" name="email" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+            <input type="email" name="email2" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
         </div>
         <br>
         <div class="input-group mb-3">
+            <span class="input-group-text">Hospital Display Photo</span>
+            <input type="file" name="display_photo" class="form-control"
+                   aria-label="Dollar amount (with dot and two decimal places)" accept="image/*" required>
+        </div>
+
+        <div class="input-group mb-3">
             <span class="input-group-text">Hospital Google Map Url</span>
             <input type="url" name="gmap" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
         </div>
         <br>
         <div class="input-group mb-3">

@@ -1,44 +1,59 @@
 {% extends "App/base.html" %}
 {% block body %}
+
+
 <div class="container my-5">
-    <form method="post">{% csrf_token %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    {% endfor %}
+    {% endif %}
+
+
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
         {% for x in hospital %}
         <label for="name">Hospital Name Here</label>
         <input name="name" value="{{x.name}}" id="name" class="form-control form-control-lg" type="text"
                placeholder="Hospital Name Here"
-               aria-label=".form-control-lg example">
+               aria-label=".form-control-lg example" required>
         <br>
         <label for="address">Hospital Adress Here</label>
         <textarea id="address" class="address form-control form-control-lg"
-                  name="address">{{x.hospitalAddress}}</textarea>
+                  name="address" required>{{x.hospitalAddress}}</textarea>
         <br>
         <div class="input-group mb-3">
             <span class="input-group-text">Phone 1</span>
             <input type="tel" value="{{x.contact1}}" name="phone1" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
         </div>
 
         <div class="input-group">
             <input name="phone2" value="{{x.contact2}}" type="tel" class="form-control"
                    aria-label="Dollar amount (with dot and two decimal places)">
-            <span class="input-group-text">Phone 2</span>
+            <span class="input-group-text" required>Phone 2</span>
         </div>
         <br>
         <div class="input-group mb-3">
             <span class="input-group-text">Hospital Email</span>
             <input type="email" value="{{x.email}}" name="email" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
         </div>
         <br>
         <div class="input-group mb-3">
             <span class="input-group-text">Hospital Google Map Url</span>
             <input type="url" name="gmap" value="{{x.mapUrl}}" class="form-control"
-                   aria-label="Dollar amount (with dot and two decimal places)">
+                   aria-label="Dollar amount (with dot and two decimal places)" required>
         </div>
         {% endfor %}
         <br>
         <div class="input-group mb-3">
-            <input value="Save" name="status" class="btn btn-primary" type="submit">
+            <input value="Save" name="status" class="btn btn-primary" type="submit" required>
         </div>
     </form>
 
@@ -48,49 +63,68 @@
     <div class="row">
         <div class="col-6">
             <br>
-            <form method="post">{% csrf_token %}
-                <input class="form-control" name="name" type="text" placeholder="Enter Owner Name" aria-label="Owner Name">
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <input class="form-control" name="name" type="text" placeholder="Enter Owner Name"
+                       aria-label="Owner Name" required>
                 <br>
-                <input class="form-control" name="contact" type="text" placeholder="Contact No" aria-label="Owner Name">
+                <input class="form-control" name="contact" type="text" placeholder="Contact No" aria-label="Owner Name"
+                       required>
                 <br>
-                <input class="form-control" type="text" name="email" placeholder="Email" aria-label="Owner Name">
+                <input class="form-control" type="text" name="email" placeholder="Email" aria-label="Owner Name"
+                       required>
                 <br>
-                <input type="submit" name="status" value="Save Owner" class="btn btn-success">
+                <input class="form-control" type="file" name="image" placeholder="Image" aria-label="Owner Image"
+                       accept="image/*"
+                       required>
+                <br>
+                <input type="submit" name="status" value="Save Owner" class="btn btn-success" required>
             </form>
         </div>
         <div class="col-6">
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
                 {% for x in owner %}
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-heading{{x.id}}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapse{{x.id}}" aria-expanded="true"
-                                aria-controls="panelsStayOpen-collapse{{x.id}}">
+                    <h2 class="accordion-header" id="flush-heading{{x.id}}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse{{x.id}}" aria-expanded="false"
+                                aria-controls="flush-collapse{{x.id}}">
                             {{x.name}}
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapse{{x.id}}" class="accordion-collapse collapse show"
-                         aria-labelledby="panelsStayOpen-heading{{x.id}}">
+                    <div id="flush-collapse{{x.id}}" class="accordion-collapse collapse"
+                         aria-labelledby="flush-heading{{x.id}}"
+                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form method="post">{% csrf_token %}
+                            <form method="post" enctype="multipart/form-data">{% csrf_token %}
                                 <input class="form-control" type="text" placeholder="Enter Owner Name"
-                                       aria-label="Owner Name" name="name" value="{{x.name}}">
+                                       aria-label="Owner Name" name="name" value="{{x.name}}" required>
+                                <input class="form-control" type="hidden" placeholder="Enter Owner Name"
+                                       aria-label="Owner Name" name="id" value="{{x.id}}" required>
                                 <br>
                                 <input class="form-control" type="text" placeholder="Contact No"
-                                       aria-label="Owner Name" name="contact" value="{{x.contact}}">
+                                       aria-label="Owner Name" name="contact" value="{{x.contact}}" required>
                                 <br>
-                                <input class="form-control" name="email" type="text" placeholder="Email" value="{{x.email}}" aria-label="Owner Name">
+                                <input class="form-control" name="email" type="text" placeholder="Email"
+                                       value="{{x.email}}" aria-label="Owner Name" required>
                                 <br>
-                                <input name="status" type="submit" value="Update Owner" class="btn btn-success">
+
+                                <input name="status" type="submit" value="Update Owner" class="btn btn-success"></form>
+                            <br>
+                            </form>
+                            <form method="post">{% csrf_token %}
+                                <input class="form-control" type="hidden" placeholder="Enter Owner Name"
+                                       aria-label="Owner Name" name="id" value="{{x.id}}" required>
+                                <input name="status" type="submit" value="Delete Owner" class="btn btn-danger">
                             </form>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
+
             </div>
+
         </div>
     </div>
-
 
 </div>
 

@@ -1,0 +1,79 @@
+{% extends "App/base.html" %}
+{% block body %}
+<div class="container my-3">
+    <h3>Bookings</h3>
+    <hr>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Feature</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in bookings %}
+        <tr>
+            <th scope="row">{{x.id}}</th>
+            <td>{{x.user}}</td>
+            <td>{{x.feature}}</td>
+            <td>{{x.date}}</td>
+            {% if x.status == True %}
+            <td><span class="badge bg-warning text-dark">Booked</span></td>
+            {% else %}
+            <td><span class="badge bg-success">Completed</span></td>
+            {% endif %}
+            {% if x.status == True %}
+            <td>
+                <form method="post">{% csrf_token %}
+                    <input type="hidden" name="id" value="{{x.id}}">
+                    <input type="submit" name="status" style="height:20px; font-size:10px" class="btn btn-success" value="Mark Completed">
+                </form>
+            </td>
+            {% else %}
+            <td>
+                <form method="post">{% csrf_token %}
+                    <input type="hidden" name="id" value="{{x.id}}">
+                    <input type="submit" name="status" style="height:20px; font-size:10px" class="btn btn-warning" value="Mark Booked">
+                </form>
+            </td>
+            {% endif %}
+
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock %}

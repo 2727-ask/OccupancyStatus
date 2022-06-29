@@ -6,6 +6,7 @@ urlpatterns = [
     path("results/",views.results, name="results"),
     path("signup_as_hptl/",views.signup_as_hptl, name="signup_as_hptl"),
     path("bookbed/<int:id>",views.bookbed, name="bookbed"),
+    path("dbookings/",views.dbookings, name="dbookings"),
     path("dashboard/",views.dashboard,name="dashboard"),
     path("details/",views.hospitalDetails,name="hospitalDetails"),
     path("bookings/",views.bookings,name="bookings"),

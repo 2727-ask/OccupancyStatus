@@ -4,8 +4,25 @@
     <h3><b>Your Bookings</b></h3>
     <hr>
 
+    <b style="color:orange">Current Bookings</b>
     <div class="row">
         {% for x in bookings %}
+        <div class="col-3">
+            <div class="card my-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{x.hospital}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{x.feature}}</h6>
+                    <p class="card-text">Booking Id {{x.id}}</p>
+                    <p class="card-link">{{x.date}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <b style="color:green">Completed</b>
+    <div class="row">
+        {% for x in completed %}
         <div class="col-3">
             <div class="card my-2" style="width: 18rem;">
                 <div class="card-body">
