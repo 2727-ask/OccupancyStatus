@@ -1,0 +1,62 @@
+{% extends "dashboard/base.html" %}
+{% block body %}
+<div class="container py-5">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message.tags}}</strong> {{message}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    <h3 class="my-2">Manage Bookings</h3>
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Facility</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in bookings %}
+        <tr>
+            <th scope="row">1</th>
+            <td>{{x.user}}</td>
+            <td>{{x.feature}}</td>
+            <td>{{x.date}}</td>
+            {% if x.status %}
+            <td>In Progress</td>
+            <td>
+                <form method="post">{% csrf_token %}
+                    <input type="hidden" name="id" value="{{x.id}}">
+                    <input type="submit" name="status" style="font-size:10px" class="btn btn-success"
+                           value="Mark Completed">
+                </form>
+            </td>
+            {% else %}
+            <td>Completed</td>
+            <td>
+                                <form method="post">{% csrf_token %}
+                    <input type="hidden" name="id" value="{{x.id}}">
+                    <input type="submit" name="status" style="font-size:10px" class="btn btn-warning"
+                           value="Mark Pending">
+                </form>
+            </td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

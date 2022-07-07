@@ -1,66 +1,133 @@
+from typing import re
+
 from django.contrib.auth.models import User
-from .models import Hospital, Doctors, Owner, Feature, Booking
+from .models import Hospital, Doctors, Owner, Feature, Booking, UserInformation, HospitalInformation, HospitalImages, \
+    HospitalSocialInformation
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login
+from django.views import View
 import datetime
+from django.utils.decorators import method_decorator
 
 
 def home(request):
     return render(request, "App/home.html")
 
 
-@login_required()
-def dashboard(request):
-    if (Hospital.objects.filter(user=request.user)):
-        facilities = Feature.objects.filter(hospital=Hospital.objects.get(user=request.user))
-        doctors = Doctors.objects.filter(hospital=Hospital.objects.get(user=request.user))
-        if (request.method == "POST"):
-            fid = request.POST.get("fid")
-            did = request.POST.get("did")
-            name = request.POST.get("name")
-            total = request.POST.get("total")
-            remaining = request.POST.get("remaining")
-            date = datetime.datetime.now()
-            hospital = Hospital.objects.get(user=request.user)
+class SignInAs(View):
+    def get(self, request):
+        return render(request, "App/signingAs.html")
 
-            if (request.POST.get("status") == "Save Facility"):
-                facility = Feature(name=name, total=total, remaining=remaining, last_updated=date, hospital=hospital)
-                facility.save()
-            elif (request.POST.get("status") == "update fac"):
-                Feature.objects.filter(id=fid).update(name=name, total=total, remaining=remaining, last_updated=date)
-            elif (request.POST.get("status") == "delete fac"):
-                Feature.objects.filter(id=fid).delete()
-            elif (request.POST.get("status") == "Save Doctor"):
-                name = request.POST.get("name")
-                contact = request.POST.get("contact")
-                email = request.POST.get("email2")
-                speciality = request.POST.get("speciality")
-                image = request.FILES.get("photo")
-                print("Image",image)
-                doctor = Doctors(name=name, email=email, contact=contact, speciality=speciality, hospital=hospital, image=image)
-                doctor.save()
-            elif (request.POST.get("status") == "update doc"):
-                name = request.POST.get("name")
-                contact = request.POST.get("contact")
-                speciality = request.POST.get("speciality")
-                Doctors.objects.filter(id=did).update(name=name, contact=contact, speciality=speciality)
-            elif (request.POST.get("status") == "delete doc"):
-                Doctors.objects.filter(id=did).delete()
-        return render(request, "App/dashboard.html", {"facilities": facilities, "doctors": doctors})
-    else:
+
+class SignInAsUser(View):
+    def get(self, request):
+        return render(request, "App/signupAsUser.html")
+
+    def post(self, request):
+        username = request.POST.get("email")
+        password = request.POST.get("password1")
+        userAlreadyPresent = User.objects.filter(username=username)
+        if (userAlreadyPresent):
+            messages.error(request, 'This email address already exists in our system', extra_tags="danger")
+        else:
+            User.objects.create_user(username=username, email=username, password=password)
+            isvalid = authenticate(username=username, password=password)
+            if (isvalid):
+                login(request, isvalid)
+                return redirect("/user-info")
+            else:
+                messages.error(request, 'Invalid credentials or user not properly registered', extra_tags="danger")
+        return render(request, "App/signupAsUser.html")
+
+
+@method_decorator(login_required, name='dispatch')
+class UserInformationView(View):
+    def get(self, request):
+        return render(request, "App/tellUSMoreAboutYou.html")
+
+    def post(self, request):
+        name = request.POST.get("name").lower()
+        phone = request.POST.get("phone").lower()
+        street = request.POST.get("street").lower()
+        city = request.POST.get("city").lower()
+        state = request.POST.get("state").lower()
+        pin = request.POST.get("postal-code").lower()
+        info = UserInformation(user=request.user, name=name, phone=phone, street=street, city=city, state=state,
+                               pin=pin)
+        info.save()
         return redirect("/")
+
+
+class SignUpAsHospital(View):
+    def get(self, request):
+        return render(request, "App/signupAsHospital.html")
+
+    def post(self, request):
+        username = request.POST.get("email")
+        password = request.POST.get("password1")
+        userAlreadyPresent = User.objects.filter(username=username)
+        if (userAlreadyPresent):
+            messages.error(request, 'This email address already exists in our system', extra_tags="danger")
+        else:
+            User.objects.create_user(username=username, email=username, password=password)
+            isvalid = authenticate(username=username, password=password)
+            if (isvalid):
+                login(request, isvalid)
+                return redirect("/hospital-info")
+            else:
+                messages.error(request, 'Invalid credentials or hospital not properly registered', extra_tags="danger")
+        return render(request, "App/signupAsHospital.html")
+
+
+class HospitalInformationView(View):
+    def get(self, request):
+        return render(request, "App/hospital-info.html")
+
+    def post(self, request):
+        name = request.POST.get("name").lower()
+        phone = request.POST.get("phone").lower()
+        street = request.POST.get("street").lower()
+        city = request.POST.get("city").lower()
+        state = request.POST.get("state").lower()
+        pin = request.POST.get("postal-code").lower()
+        gmap = request.POST.get("gmap")
+
+        info = HospitalInformation(user=request.user, name=name, phone=phone, street=street, city=city, state=state,
+                                   pin=pin, gmap=gmap)
+        info.save()
+
+        return redirect("/hospital-social-info")
+
+
+class HospitalSocialInformationView(View):
+    def get(self, request):
+        return render(request, "App/hospital-social-info.html")
+
+    def post(self, request):
+        website = request.POST.get("website")
+        phone = request.POST.get("phone")
+        email = request.POST.get("email")
+
+        print(website, phone, email)
+        info = HospitalSocialInformation(website=website, phone=phone, email=email, user=request.user)
+        info.save()
+        return redirect('/dashboard')
 
 
 def results(request):
     if (request.method == "GET"):
         query = request.GET.get("query")
+        collection_ids = HospitalImages.objects.values_list('hospital', flat=True).distinct()
+        image_list = [
+            HospitalImages.objects.filter(hospital__id=c)[0] for c in collection_ids
+        ]
         if (query):
-            hospitals = Hospital.objects.filter(name__contains=query)
-        else:
-            hospitals = Hospital.objects.all()
-    return render(request, "App/results.html", {"hospitals": hospitals})
+            hospitals = HospitalInformation.objects.filter(name__contains=query)
+            return render(request, "App/results.html", {"hospitals": hospitals})
+
+    return render(request, "App/results.html", {"hospitals": image_list})
 
 
 @login_required()
@@ -70,14 +137,16 @@ def dbookings(request):
         id = request.POST.get("id")
         if (status == "Mark Completed"):
             b = Booking.objects.get(id=id)
-            remaining = Feature.objects.get(id = b.feature.id).remaining
-            Feature.objects.filter(id = b.feature.id).update(remaining=remaining + 1,last_updated=datetime.datetime.now())
+            remaining = Feature.objects.get(id=b.feature.id).remaining
+            Feature.objects.filter(id=b.feature.id).update(remaining=remaining + 1,
+                                                           last_updated=datetime.datetime.now())
             Booking.objects.filter(id=id).update(status=False)
         else:
 
             b = Booking.objects.get(id=id)
-            remaining = Feature.objects.get(id = b.feature.id).remaining
-            Feature.objects.filter(id = b.feature.id).update(remaining=remaining - 1,last_updated=datetime.datetime.now())
+            remaining = Feature.objects.get(id=b.feature.id).remaining
+            Feature.objects.filter(id=b.feature.id).update(remaining=remaining - 1,
+                                                           last_updated=datetime.datetime.now())
             Booking.objects.filter(id=id).update(status=True)
 
     bookings = Booking.objects.filter(hospital=Hospital.objects.get(user=request.user))
@@ -98,16 +167,17 @@ def bookbed(request, id):
                               date=datetime.datetime.now(), status=True, service_completed=False)
             booking.save()
             remaining = feature.remaining
-            Feature.objects.filter(id=id).update(remaining=remaining - 1,last_updated=datetime.datetime.now())
+            Feature.objects.filter(id=id).update(remaining=remaining - 1, last_updated=datetime.datetime.now())
             messages.success(request, 'Congratulations! Your booking is confirmed')
     return render(request, "App/bookbed.html", {"feature": feature})
 
 
 def hospital(request, id):
-    hospital = Hospital.objects.get(id=id)
+    hospital = HospitalInformation.objects.get(id=id)
     doctors = Doctors.objects.filter(hospital=id)
     owner = Owner.objects.filter(hospital=id)
     features = Feature.objects.filter(hospital=id)
+
     return render(request, "App/hospitaldetail.html",
                   {"hospital": hospital, "doctors": doctors, "owner": owner, "features": features})
 
@@ -154,7 +224,6 @@ def hospitalDetails(request):
             email = request.POST.get("email")
             phone = request.POST.get("contact")
 
-
             Owner.objects.filter(id=id).update(name=name, email=email, hospital=hospita, contact=phone)
             messages.success(request, 'Success! Owner Updated Successfully')
 
@@ -162,8 +231,6 @@ def hospitalDetails(request):
             id = request.POST.get("id")
             Owner.objects.get(id=id).delete()
             messages.success(request, 'Success! Owner Deleted Successfully')
-
-
 
     return render(request, "App/hospitalDetails.html", {"hospital": hospital, "owner": owners})
 
@@ -193,7 +260,7 @@ def signup_as_hptl(request):
         address = request.POST.get("address")
         gmap = request.POST.get("gmap")
         image = request.FILES.get("display_photo")
-        print("Image",image)
+        print("Image", image)
         hp = Hospital.objects.filter(user=request.user)
         print(hp)
         if (hp):

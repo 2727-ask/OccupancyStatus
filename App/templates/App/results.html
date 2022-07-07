@@ -16,16 +16,16 @@
             {% for x in hospitals %}
             <div class="col-lg-4 mb-5">
                 <div class="card h-100 shadow border-0">
-                    {% if x.display_photo %}
-                        <img class="card-img-top" width="600" height="220" src="/media/{{x.display_photo}}" alt="..."/>
+                    {% if x.image %}
+                        <img class="card-img-top" width="600" height="220" src="/media/{{x.image}}" alt="..."/>
                     {% else %}
                     <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..."/>
                     {% endif %}
                     <div class="card-body p-4">
-                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{x.name}}</div>
-                        <a class="text-decoration-none link-dark stretched-link" href="/hospital/{{x.id}}"><h5
-                                class="card-title mb-3">{{x.name}}</h5></a>
-                        <p class="card-text mb-0">{{x.hospitalAddress}}</p>
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{x.hospital.name}}</div>
+                        <a class="text-decoration-none link-dark stretched-link" href="/hospital/{{x.hospital.id}}"><h5
+                                class="card-title mb-3">{{x.hospital.name}}</h5></a>
+                        <p class="card-text mb-0">{{x.hospital.city}}</p>
                     </div>
                     <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
@@ -33,8 +33,8 @@
                                 <img class="rounded-circle me-3" width="40" height="40" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJmLzFfzGo9E1wvN_9dDCcMiwhkBR5HaOBxQ&usqp=CAU"
                                      alt="..."/>
                                 <div class="small">
-                                    <div class="fw-bold">{{x.email}}</div>
-                                    <div class="text-muted">{{x.contact1}}</div>
+                                    <div class="fw-bold"></div>
+                                    <div class="text-muted">{{x.hospital.phone}}</div>
                                 </div>
                             </div>
                         </div>

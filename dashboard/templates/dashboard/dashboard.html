@@ -1,0 +1,78 @@
+{% extends "dashboard/base.html" %}
+{% block body %}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-center">
+        <img style="width:7vw; height:7vw"
+             src="https://e7.pngegg.com/pngimages/618/567/png-clipart-red-cross-illustration-hospital-plus-and-minus-signs-symbol-american-red-cross-red-cross-miscellaneous-angle.png"
+             alt="" srcset="">
+        <h1 style="margin-top:3vh;margin-left:2vw;margin-right:2vw">{{info.name}}</h1>
+        <img style="width:7vw; height:7vw"
+             src="https://e7.pngegg.com/pngimages/618/567/png-clipart-red-cross-illustration-hospital-plus-and-minus-signs-symbol-american-red-cross-red-cross-miscellaneous-angle.png"
+             alt="" srcset="">
+    </div>
+
+    <div class="container">
+        <h3 style="text-align:center">Dashboard</h3>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Profile</h5>
+                            <a href="edit-profile/" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Facilities</h5>
+                            <a href="facilites/" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Doctors</h5>
+                            <a href="doctors/" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Owners</h5>
+                            <a href="owners/" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mt-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Images</h5>
+                            <a href="images/" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mt-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Bookings</h5>
+                            <a href="manage-bookings/" class="btn btn-primary">Manage</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

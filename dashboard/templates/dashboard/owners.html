@@ -1,0 +1,57 @@
+{% extends "dashboard/base.html" %}
+{% block body %}
+<div class="container py-5">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message.tags}}</strong> {{message}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    <h3 class="my-2">Hospital Owners</h3>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <form id="fs-frm" name="registration-form" accept-charset="utf-8" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <fieldset id="fs-frm-inputs">
+                    <label for="full-name">Owner Name</label>
+                    <input type="text" name="name" id="full-name" placeholder="Owner Name"
+                           required="">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email Adress"
+                           required="">
+                    <label for="contact">Contact</label>
+                    <input type="number" name="contact" id="contact"
+                           placeholder="Phone Number"
+                           required="">
+                    <label for="image">Profile Photo</label>
+                    <input type="file" name="image" id="image"
+                           placeholder="Image"
+                           required="" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp">
+
+                </fieldset>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <div class="col">
+            <div class="panel" style="width:40vw; height:50vh">
+                {% for x in feature %}
+                <a href="{{x.id}}">
+                    <div class="card">
+                        <div class="card-body">
+                            {{x.name}}
+                        </div>
+                    </div>
+                </a>
+
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

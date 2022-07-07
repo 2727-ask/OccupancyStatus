@@ -1,0 +1,62 @@
+{% extends "dashboard/base.html" %}
+{% block body %}
+<div class="container py-5">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message.tags}}</strong> {{message}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    <h3 class="my-2">Update Facility</h3>
+    <hr>
+    <div class="row">
+        <div class="col-5">
+            <form id="fs-frm" name="registration-form" accept-charset="utf-8" method="post">{% csrf_token %}
+                <fieldset id="fs-frm-inputs">
+                    <label for="full-name">Feature Name</label>
+                    <input type="text" name="name" id="full-name" value="{{feature.name}}" placeholder="Feature Name"
+                           required="">
+                    <label for="total">Total</label>
+                    <input type="number" name="total" id="total" value="{{feature.total}}" placeholder="0"
+                           required="">
+                    <label for="remaining">Remaining</label>
+                    <input type="number" name="remaining" id="remaining"
+                           placeholder="0" value="{{feature.remaining}}"
+                           required="">
+                </fieldset>
+                <input type="submit" value="Save">
+                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete Facility
+                </button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                This action will delete <b>{{feature.name}}</b>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" name="action" style="background:red, color:white" value="Delete"
+                                       class="btn btn-danger">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "App/base.html" %}
+{% block body %}
+
+<div class="container" style="margin-top:20vh">{% load static %}
+    <h2 style="text-align:center">Who are You?</h2>
+    <br>
+    <div class="d-flex justify-content-center">
+        <a href="/signing_as/user" style="border:2px solid red;border-radius:30px">
+            <img src="{% static 'App/users.png'%}" style="width:20vw;height:15vw;border-radius:30px"
+                 class="img-responsive">
+            <h4 style="text-align:center; font-size:2vw">User</h4>
+        </a>
+        <a href="/signing_as/hospital" class="mx-3" style="border:2px solid red; border-radius:30px">
+            <img src="{% static 'App/hospital.png'%}" style="width:20vw;height:15vw;border-radius:30px"
+                 class="img-responsive">
+            <h4 style="text-align:center; font-size:2vw">Hospital</h4>
+        </a>
+    </div>
+</div>
+{% endblock %}

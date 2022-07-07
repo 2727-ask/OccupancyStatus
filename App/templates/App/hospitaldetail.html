@@ -1,144 +1,297 @@
 {% extends "App/base.html" %}
 {% block body %}
-<header class="masthead">
-    <div class="container position-relative">
-        <div class="row justify-content-center">
-            <div class="col-xl-6">
-                <div class="text-center text-white">
-                    <h5>Details About</h5>
-                    <h1 class="mb-4">{{hospital.name}}</h1>
-                </div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+     style="background-image: url('https://source.unsplash.com/random/?hospital,fresh');background-repeat:no-repeat;background-size: cover;background-color:black">
+    <div class="col-md-5 p-lg-5 mx-auto my-5 bg-secondary" style="border-radius:10px">
+        <h1 class="display-5 fw-normal" style="color:white">{{hospital.name}}</h1>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+<div class="container">
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4"
+             src="https://media1.giphy.com/media/Q5pHIO3zzh9hrRSxKp/giphy.gif?cid=6c09b952a1chjg40hvt9zkmspisfsta3xctrti2mrrsmpxbl&rid=giphy.gif&ct=s"
+             alt="" width="72" height="57">
+        <h1 class="display-5 fw-bold">Find Us</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">{{hospital.street}}</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{hospital.gmap}}" type="button" class="btn btn-primary btn-lg px-4 gap-3">Directions</a>
+                <a href="tel:{{hospital.phone}}" type="button" class="btn btn-outline-secondary btn-lg px-4">Instant
+                    Call</a>
             </div>
         </div>
     </div>
-</header>
 
-<aside class="bg-primary bg-gradient p-4 p-sm-5 mt-0">
-    <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
-        <div class="mb-4 mb-xl-0">
-            <div class="fs-3 fw-bold text-white">{{hospital.hospitalAddress}}</div>
-            <div class="text-white-50"><i class="bi bi-telephone-fill rounded"></i> : {{hospital.contact1}}</div>
-            <div class="text-white-50"><i class="bi bi-telephone-fill rounded"></i> : {{hospital.contact2}}</div>
-        </div>
-        <div class="ms-xl-4">
-            <div class="input-group mb-2">
-                <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..."
-                       aria-describedby="button-newsletter"/>
-                <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
-            </div>
-            <div class="small text-white-50">We care about privacy, and will never share your data.</div>
-        </div>
-    </div>
-</aside>
-
-<div class="container my-5">
-    <h2 class="fw-bolder my-3" style="text-align:center">Available Resources</h2> <img class="d-flex mx-auto my-2"
-                                                                                       style="width:30px"
-                                                                                       src="https://upload.wikimedia.org/wikipedia/commons/4/41/Red_circle.gif?20210202002436">
-    <div class="row">
+    <div class="row align-items-md-stretch mt-5">
         {% for x in features %}
-        <div class="col-12 col-lg-6 col-xl">
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <div class="row align-items-center gx-0">
-                        <div class="col">
-                            <h6 class="text-uppercase text-muted mb-2">
-                                <span class="badge bg-success mt-n1">
-                      {{x.name}}
-                    </span>
-
-                            </h6>
-                            <!-- Heading -->
-                            <span class="h2 mb-0">
-                                <b style="font-size:30px;color:green">{{x.remaining}}</b><b
-                                    style="font-size:20px;color:white"> /{{x.total}}</b>
-                    </span>
-
-                            <!-- Badge -->
-
-                        </div>
-                        <div class="col-auto">
-
-                            <!-- Icon -->
-
-                            <span class="h2 mb-0">
-                                <b style="font-size:14px;color:pink">{{x.last_updated}}</b><br>
-                                <a href="/bookbed/{{x.id}}" class="btn btn-success">BookNow</a>
-
-                            </span>
-                        </div>
-                    </div> <!-- / .row -->
+        <div class="col-md-6 my-2">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>{{x.name}}</h2>
+                <div class="amount">
+                    <span><span style="font-size:20px" class="badge bg-success">{{x.remaining}}</span>&nbsp;/&nbsp;<span
+                            style="font-size:12px" class="badge bg-secondary">{{x.total}}</span></span>
                 </div>
+                <div class="amount mt-3">
+                    <span>Last updated: <span style="font-size:20px" class="badge bg-primary">{{x.last_updated}}</span></span>
+                </div>
+                <br>
+                <a href="/bookbed/{{x.id}}" class="btn btn-outline-light" type="button">Book Now</a>
             </div>
         </div>
         {% endfor %}
     </div>
-</div>
 
-<div class="container-fluid">
-    <section class="py-5 bg-light">
-        <div class="container px-5 my-5">
-            <div class="text-center">
-                <h2 class="fw-bolder">Our Experienced Doctors</h2>
-                <p class="lead fw-normal text-muted mb-5">Dedicated to quality and your success</p>
-            </div>
-            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-                {% for x in doctors %}
-                <div class="col mb-5 mb-5 mb-xl-0">
-                    <div class="text-center">
-                        <img class="img-fluid rounded-circle mb-4 px-4"
-                             src="/media/{{x.image}}" alt="...">
-                        <h5 class="fw-bolder">{{x.name}}</h5>
-                        <div class="fst-italic text-muted">{{x.speciality}}</div>
-                    </div>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h3>Our Expert <span> Team</span></h3>
+                    <p>24/7 dedicated service and care &amp; Highly qualified doctors</p>
+                    <div class="line"></div>
                 </div>
-                {% endfor %}
             </div>
         </div>
-    </section>
-</div>
-
-<div class="container-fluid">
-    <section class="py-5 bg-info bg-gradient p-4 p-sm-5 mt-0">
-        <div class="container px-5 my-5">
-            <div class="text-center">
-                <h2 class="fw-bolder">About The Pillars</h2>
-                <p class="lead fw-normal text-muted mb-5">Dedicated to serve this nation</p>
-            </div>
-            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-                {% for x in owner %}
-                <div class="col mb-5 mb-5 mb-xl-0">
-                    <div class="text-center">
-                        <img class="img-fluid rounded-circle mb-4 px-4"
-                             src="/media/{{x.image}}" width="150" height="150" alt="/media/">
-                        <h5 class="fw-bolder" style="color:white">{{x.name}}</h5>
-                        <div class="fst-italic text-muted">{{x.contact}}</div>
+        <div class="row">
+            <!-- Single Advisor-->
+            {% for x in doctors %}
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb"><img src="/media/{{x.image}}" style="width=30vw; height:20vh" alt="">
+                        <!-- Social Info-->
+                        <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
+                                class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>{{x.name}}</h6>
+                        <p class="designation">{{x.speciality}}</p>
+                         <p class="designation">{{x.contact}}</p>
+                        <p class="designation">{{x.email}}</p>
                     </div>
                 </div>
-                {% endfor %}
+
+            </div>
+            {% endfor %}
+            <!-- Single Advisor-->
+
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h3>Pillars of <span>{{hospital.name}}</span></h3>
+                    <p>24/7 dedicated service and care &amp; Highly qualified doctors</p>
+                    <div class="line"></div>
+                </div>
             </div>
         </div>
-    </section>
-</div>
+        <div class="row">
+            <!-- Single Advisor-->
+            {% for x in owner %}
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb"><img src="/media/{{x.image}}" style="width=30vw; height:20vh" alt="">
+                        <!-- Social Info-->
+                        <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
+                                class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>{{x.name}}</h6>
+                        <p class="designation">{{x.contact}}</p>
+                        <p class="designation">{{x.email}}</p>
+                    </div>
+                </div>
 
+            </div>
+            <!-- Single Advisor-->
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
 
 <style>
-    header.masthead {
+
+.single_advisor_profile {
     position: relative;
-    background-color: #343a40;
-    background: url("https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706413?b=1&k=20&m=1312706413&s=170667a&w=0&h=VRi3w2E1UqvCCcK-nDV6mH7FhDZoTU9MM2QKSom96X4=") no-repeat center center;
-    background-size: cover;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    margin-bottom: 50px;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    z-index: 1;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+    box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
 }
-
-
-
-
-
+.single_advisor_profile .advisor_thumb {
+    position: relative;
+    z-index: 1;
+    border-radius: 15px 15px 0 0;
+    margin: 0 auto;
+    padding: 30px 30px 0 30px;
+    background-color: #3f43fd;
+    overflow: hidden;
+}
+.single_advisor_profile .advisor_thumb::after {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    width: 150%;
+    height: 80px;
+    bottom: -45px;
+    left: -25%;
+    content: "";
+    background-color: #ffffff;
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+}
+@media only screen and (max-width: 575px) {
+    .single_advisor_profile .advisor_thumb::after {
+        height: 160px;
+        bottom: -90px;
+    }
+}
+.single_advisor_profile .advisor_thumb .social-info {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 0;
+    right: 30px;
+    text-align: right;
+}
+.single_advisor_profile .advisor_thumb .social-info a {
+    font-size: 14px;
+    color: #020710;
+    padding: 0 5px;
+}
+.single_advisor_profile .advisor_thumb .social-info a:hover,
+.single_advisor_profile .advisor_thumb .social-info a:focus {
+    color: #3f43fd;
+}
+.single_advisor_profile .advisor_thumb .social-info a:last-child {
+    padding-right: 0;
+}
+.single_advisor_profile .single_advisor_details_info {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    text-align: right;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    border-radius: 0 0 15px 15px;
+    background-color: #ffffff;
+}
+.single_advisor_profile .single_advisor_details_info::after {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 3px;
+    background-color: #3f43fd;
+    content: "";
+    top: 12px;
+    right: 30px;
+}
+.single_advisor_profile .single_advisor_details_info h6 {
+    margin-bottom: 0.25rem;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .single_advisor_profile .single_advisor_details_info h6 {
+        font-size: 14px;
+    }
+}
+.single_advisor_profile .single_advisor_details_info p {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .single_advisor_profile .single_advisor_details_info p {
+        font-size: 12px;
+    }
+}
+.single_advisor_profile:hover .advisor_thumb::after,
+.single_advisor_profile:focus .advisor_thumb::after {
+    background-color: #070a57;
+}
+.single_advisor_profile:hover .advisor_thumb .social-info a,
+.single_advisor_profile:focus .advisor_thumb .social-info a {
+    color: #ffffff;
+}
+.single_advisor_profile:hover .advisor_thumb .social-info a:hover,
+.single_advisor_profile:hover .advisor_thumb .social-info a:focus,
+.single_advisor_profile:focus .advisor_thumb .social-info a:hover,
+.single_advisor_profile:focus .advisor_thumb .social-info a:focus {
+    color: #ffffff;
+}
+.single_advisor_profile:hover .single_advisor_details_info,
+.single_advisor_profile:focus .single_advisor_details_info {
+    background-color: #070a57;
+}
+.single_advisor_profile:hover .single_advisor_details_info::after,
+.single_advisor_profile:focus .single_advisor_details_info::after {
+    background-color: #ffffff;
+}
+.single_advisor_profile:hover .single_advisor_details_info h6,
+.single_advisor_profile:focus .single_advisor_details_info h6 {
+    color: #ffffff;
+}
+.single_advisor_profile:hover .single_advisor_details_info p,
+.single_advisor_profile:focus .single_advisor_details_info p {
+    color: #ffffff;
+}
 
 
 
 </style>
 
+
+<div class="list-group my-4 p-5">
+
+    <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3iabgn2K1VKgr623znRa0cb1VLC-K6n12Rr_unVx4sGwxRzDGHjq_CybZHskoSrGzWPI&usqp=CAU"
+             alt="twbs" width="32" height="32"
+             class="rounded-circle flex-shrink-0">
+        <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+                <h6 class="mb-0">Hospital Address</h6>
+                <p class="mb-0 opacity-75">{{hospital.street}}</p>
+            </div>
+            <small class="opacity-50 text-nowrap"></small>
+        </div>
+    </a>
+    <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <img src="https://cdn.pixabay.com/photo/2014/04/02/11/16/phone-305741_640.png" alt="twbs" width="32"
+             height="32"
+             class="rounded-circle flex-shrink-0">
+        <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+                <h6 class="mb-0">Emergency Contact 24/7</h6>
+                <p class="mb-0 opacity-75">{{hospital.phone}}</p>
+            </div>
+            <small class="opacity-50 text-nowrap"></small>
+        </div>
+    </a>
+</div>
+</div>
 {% endblock %}
